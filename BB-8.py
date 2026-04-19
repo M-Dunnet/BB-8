@@ -25,7 +25,7 @@ from lib import generateConcensus as gc_md
 # -----------------------------
 # Globals
 # -----------------------------
-PATH = '/'.join(os.path.realpath(__file__).split('/')[:-1]) + '/bin/'
+PATH = '/'.join(os.path.realpath(__file__).split('/')[:-1]) + '/lib/'
 sys.path.append(os.path.abspath(PATH))
 bb8Path = '/'.join(os.path.realpath(__file__).split('/')[:-1]) + '/'
 blat=bb8Path+'/blat/blat'
