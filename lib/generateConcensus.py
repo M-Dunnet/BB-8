@@ -40,15 +40,16 @@ with warnings.catch_warnings():
     import networkx as nx
 
 ## BB-8 module imports
-PATH = '/'.join(os.path.realpath(__file__).split('/')[:-1]) + '/bin/'
-sys.path.append(os.path.abspath(PATH))
+base = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(base)
+sys.path.append(parent)
 from lib.preprocess import preprocess
 from lib.call_peaks import call_peaks
 from lib.determine_consensus import determine_consensus, zero_repeat_cons
 
 ## Define paths for BB-8.py and blat
-bb8Path = '/'.join(os.path.realpath(__file__).split('/')[:-1]) + '/'
-blat=bb8Path+'/blat/blat'
+bb8Path = parent
+blat = os.path.join(bb8Path, 'blat', 'blat')
 
 
 def rounding(x, base):
