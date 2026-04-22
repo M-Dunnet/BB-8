@@ -308,17 +308,18 @@ def generate_concensus(args, tmp_file_path):
             for cons_idx in async_result.get():   ## Add .get() when using multiprocessing
                 consensus, adapter, subs, _peaks = cons_idx
                 if consensus:
-                    if args.compress_output:
-                        consensus = consensus.encode()
-                    outDict[adapter].write(consensus)
-                    outCountDict[adapter] += 1
-                    consNumber += 1
-
-                    for subname, subseq, subq in subs:
-                        entry = f'@{subname}\n{subseq}\n+\n{subq}\n'
+                    if len(consensus) >= args.mdistcutoff:
                         if args.compress_output:
-                            entry = entry.encode()
-                        outSubDict[adapter].write(entry)
+                            consensus = consensus.encode()
+                        outDict[adapter].write(consensus)
+                        outCountDict[adapter] += 1
+                        consNumber += 1
+    
+                        for subname, subseq, subq in subs:
+                            entry = f'@{subname}\n{subseq}\n+\n{subq}\n'
+                            if args.compress_output:
+                                entry = entry.encode()
+                            outSubDict[adapter].write(entry)
 
             processed_file.write(f'{name}\n')
 
