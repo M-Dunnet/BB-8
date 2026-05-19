@@ -5,7 +5,7 @@ cwd=$(pwd)
 # Resolve dependencies
 echo 'Pip installables (scipy, numpy, mappy, edlib, networkx, pyabpoa, Cython)'
 python3 -m pip install --upgrade pip
-python3 -m pip install scipy numpy mappy edlib networkx pyabpoa Cython
+python3 -m pip install scipy numpy mappy edlib networkx pyabpoa Cython editdistance
 
 echo 'conk'
 python3 -m pip install wheel setuptools
